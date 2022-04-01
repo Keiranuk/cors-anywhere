@@ -1,5 +1,5 @@
 // Listen on a specific host via the HOST environment variable
-var host = process.env.HOST || '0.0.0.0';
+var host = process.env.HOST || 'cors-node-02-eu.herokuapp.com';
 // Listen on a specific port via the PORT environment variable
 var port = process.env.PORT || 8080;
 
@@ -23,7 +23,7 @@ var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
   originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
-  requireHeader: ['origin', 'x-requested-with'],
+ // requireHeader: ['origin', 'x-requested-with'],
   checkRateLimit: checkRateLimit,
   removeHeaders: [
     'cookie',
@@ -38,6 +38,7 @@ cors_proxy.createServer({
     //'x-forwarded-for',
      'x-forwarded-proto',
      'x-forwarded-port',
+     'x-requested-with',
   ],
   redirectSameOrigin: true,
   httpProxyOptions: {
